@@ -52,7 +52,7 @@ String txId = node.transfer(account, buddy, 1_00000000, 100_000, "Here's for you
 
 Sign a transaction offline:
 ```
-Transaction tx = Transaction.makeTransferTx(account, buddy, 1_00000000, Asset.WAVES, 100_000, Asset.AGATE, "");
+Transaction tx = Transaction.makeTransferTx(account, buddy, 1_00000000, Asset.WAVES, 100_000, Asset.AGATES, "");
 System.out.println("JSON encoded data: " + tx.getJson());
 System.out.println("Server endpoint to send this JSON to: " + tx.getEndpoint());
 ```
@@ -68,8 +68,8 @@ Node matcher = new Node("https://testnode2.agatechain.org");
 String matcherKey = matcher.getMatcherKey();
 String wbtcId = "Fmg13HEHJHuZYbtJq8Da8wifJENq8uBxDuWoP9pVe2Qe";
 Order order = matcher.createOrder(alice, matcherKey,
-                new AssetPair(Asset.AGATE, wbtcId),
-                // buy 10 WAVES at 0.00090000 WBTC each
+                new AssetPair(Asset.AGATES, wbtcId),
+                // buy 10 AGATES at 0.00090000 WBTC each
                 Order.Type.BUY, 90_000, 10 * Asset.TOKEN,
                 // make order valid for 1 hour
                 System.currentTimeMillis() + 3_600_000, MATCHER_FEE);
