@@ -1,31 +1,31 @@
-# WavesJ
-A Java library for interacting with the Waves blockchain.
+# Agate Java Library
+A Java library for interacting with the Agate blockchain.
 
 Supports node interaction, offline transaction signing, Matcher orders, and creating addresses and keys.
 
-## Using WavesJ in your project
-Use the codes below to add WavesJ as a dependency for your project.
+## Using AgateJavaLibrary in your project
+Use the codes below to add AgateJ as a dependency for your project.
 
 ##### Maven:
 ```
 <dependency>
-    <groupId>com.wavesplatform</groupId>
-    <artifactId>wavesj</artifactId>
+    <groupId>com.agatechain</groupId>
+    <artifactId>agatej</artifactId>
     <version>0.6</version>
 </dependency>
 ```
 
 ##### Gradle:
 ```
-compile group: 'com.wavesplatform', name: 'wavesj', version: '0.6'
+compile group: 'com.agatechain', name: 'agatej', version: '0.6'
 ```
 
 ##### SBT:
 ```
-libraryDependencies += "com.wavesplatform" % "wavesj" % "0.6"
+libraryDependencies += "com.agatechain" % "agatej" % "0.6"
 ```
 
-[This library's page at Maven Central](https://mvnrepository.com/artifact/com.wavesplatform/wavesj)
+
 
 ## Basic Usage
 Create an account from a private key ('T' for testnet):
@@ -38,7 +38,7 @@ String address = account.getAddress();
 
 Create a Node and learn a few things about blockchain:
 ```
-Node node = new Node("https://my.waves.node/");
+Node node = new Node("https://my.agate.node/");
 System.out.println("Current height is " + node.getHeight());
 System.out.println("My balance is " + node.getBalance(address));
 System.out.println("With 100 confirmations: " + node.getBalance(address, 100));
@@ -52,7 +52,7 @@ String txId = node.transfer(account, buddy, 1_00000000, 100_000, "Here's for you
 
 Sign a transaction offline:
 ```
-Transaction tx = Transaction.makeTransferTx(account, buddy, 1_00000000, Asset.WAVES, 100_000, Asset.WAVES, "");
+Transaction tx = Transaction.makeTransferTx(account, buddy, 1_00000000, Asset.WAVES, 100_000, Asset.AGATE, "");
 System.out.println("JSON encoded data: " + tx.getJson());
 System.out.println("Server endpoint to send this JSON to: " + tx.getEndpoint());
 ```
@@ -64,11 +64,11 @@ node.send(tx);
 
 Create a DEX order:
 ```
-Node matcher = new Node("https://testnode2.wavesnodes.com");
+Node matcher = new Node("https://testnode2.agatechain.org");
 String matcherKey = matcher.getMatcherKey();
 String wbtcId = "Fmg13HEHJHuZYbtJq8Da8wifJENq8uBxDuWoP9pVe2Qe";
 Order order = matcher.createOrder(alice, matcherKey,
-                new AssetPair(Asset.WAVES, wbtcId),
+                new AssetPair(Asset.AGATE, wbtcId),
                 // buy 10 WAVES at 0.00090000 WBTC each
                 Order.Type.BUY, 90_000, 10 * Asset.TOKEN,
                 // make order valid for 1 hour
